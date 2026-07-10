@@ -27,6 +27,7 @@ requirements:
     - optax
     - jax-tqdm
     - nir
+    - grain
 
 test:
   imports:
