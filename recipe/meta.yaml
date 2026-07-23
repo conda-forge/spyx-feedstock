@@ -1,5 +1,6 @@
 {% set name = "spyx" %}
-{% set version = "0.1.20" %}
+{% set version = "1.0.0" %}
+{% set python_min = "3.11" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +8,26 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/spyx-{{ version }}.tar.gz
-  sha256: c72044312c93f47978ae5af50465ad964536027f70917ccbab1550f5380e6cca
+  sha256: ae5fb31de414e12a3ff3f733874c273b994159ee838c9223dadf0c870c878c3e
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
     - python {{ python_min }}
     - pip
     - setuptools
+    - hatchling
   run:
     - python >={{ python_min }}
     - dm-haiku
     - optax
     - jax-tqdm
     - nir
+    - grain
 
 test:
   imports:
